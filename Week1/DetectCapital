@@ -2,6 +2,8 @@
 /*
   I made a minor mistake by saying if first=isupper which I changed but I consider 
   this one relatively straight forward.
+  Another option could have been using the Ascii code and checking if the number falls within
+  the range for Capital letters
 */
 According to LeetCode
 Runtime: 4 ms, faster than 78.53% of C++ online submissions for Detect Capital.
