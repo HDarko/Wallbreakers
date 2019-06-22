@@ -1,0 +1,34 @@
+/*Notes:: 
+So while an obvious solution of iterating over the vector multiple times came to me.
+I wanted to see if I could do another more efficient one. I used std::rotate to continuously shift the 
+odd elements and uses counters lshifts and index to make sure that the constructor knew 
+when it had gone through all the elements in the vector.
+
+Currently according to LeetCode on 6/21/2019.
+My Runtime: 128 ms, faster than 5.43% of C++ online submissions for Sort Array By Parity.
+Memory Usage: 9.7 MB, less than 58.20% of C++ online submissions for Sort Array By Parity.
+
+*/
+
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& A) {         
+        int index=0;
+        int lshifts=0;
+            while(index<A.size() && ((lshifts==0) || lshifts<A.size()))
+            {
+ 
+                if (A[index] % 2 !=0)
+                {       
+                    std::rotate(A.begin()+index, A.begin()+index+1, A.end());                     
+                    lshifts++;
+                }
+                else
+                {
+                    index++;
+                }
+            }
+            return A;
+        
+    }
+};
