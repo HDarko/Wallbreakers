@@ -1,0 +1,38 @@
+ /*Originally just gonna directly increase the integer but
+ once I saw the test cases of [9] and [9,9], I need to reiterate my
+ program.
+ I decided to iterate backwards towards the front of vector and 
+ adjust any 9s to 0, if we reach a
+ non 9 number then we add 1 and stop the loop, else if the most
+ significant bit is also a 9 then we convert that to a 1 and add a 0 to end of 
+ vector.
+ */
+ class Solution {
+public:
+    vector<string> fizzBuzz(int n) {
+        vector<string> result;
+        for(int num=1; num<=n;num++)
+        {
+            if((num%15)==0)
+            {
+                result.push_back("FizzBuzz");
+            }
+            else if(num%5==0)
+            {
+                   result.push_back("Buzz");
+            }
+            else if(num%3==0)
+            {
+                   result.push_back("Fizz");
+            }
+              else
+            {
+                 result.push_back(to_string(num));
+            }
+             
+             
+        }
+        return result;
+        
+    }
+};
