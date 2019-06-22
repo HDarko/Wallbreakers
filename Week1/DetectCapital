@@ -1,0 +1,46 @@
+
+/*
+  I made a minor mistake by saying if first=isupper which I changed but I consider 
+  this one relatively straight forward.
+*/
+According to LeetCode
+Runtime: 4 ms, faster than 78.53% of C++ online submissions for Detect Capital.
+Memory Usage: 8.2 MB, less than 43.23% of C++ online submissions for Detect Capital.
+
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        bool first=false;
+        int numOfCaps=0;
+        for(int i=0;i<word.size();i++)
+        {
+            if(i==0)
+               {
+                   if(isupper(word[0]))
+                   {
+                       first=true;
+                      numOfCaps++;
+                   }
+               
+               }
+            else{
+                 if (isupper(word[i]))
+                 {
+                     
+                    numOfCaps++;
+                 }
+            }
+        }
+        cout<<numOfCaps;
+        if((numOfCaps==0) || (numOfCaps==word.size()))
+        {
+              return true;
+        }
+        
+        if((numOfCaps==1) && first)
+        {
+            return true;
+        }
+        return false;
+    }
+};
