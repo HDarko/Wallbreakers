@@ -7,6 +7,10 @@
  significant bit is also a 9 then we convert that to a 1 and add a 0 to end of 
  vector.
  */
+ /*
+ Runtime: 8 ms, faster than 16.86% of C++ online submissions for Plus One.
+Memory Usage: 8.5 MB, less than 51.86% of C++ online submissions for Plus One.
+ */
  class Solution {
 public:
     vector<string> fizzBuzz(int n) {
