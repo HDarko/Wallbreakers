@@ -1,0 +1,42 @@
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& A) {
+  
+        //Obvious solution is make a new vector or pushback but
+            //is there an stl we can use
+            //Try std::rotate
+       ///if(A.size()>3)
+        //{
+        //    size=A.size-2
+       // }
+        int size=A.size();
+        int index=0;
+        int lshifts=0;
+            while(index<A.size() && ((lshifts==0) || index!=lshifts))
+            {
+                
+               
+                if (A[index] % 2 !=0)
+                {
+                    cout<<"Before: ";
+                    cout<<index;
+                    std::copy(A.begin(),A.end(),std::ostream_iterator<int>(std::cout," "));
+                    std::rotate(A.begin()+index, A.begin()+index+1, A.end());  
+                    cout<<"\n";
+                    cout<<"After ";
+                    std::copy(A.begin(),A.end(),std::ostream_iterator<int>(std::cout," "));
+                    lshifts++;
+                }
+                else
+                {
+                    index++;
+                    
+                    cout<<'n';
+                   // cout<<index;
+                   // cout<<A.size();
+                }
+            }
+            return A;
+        
+    }
+};
