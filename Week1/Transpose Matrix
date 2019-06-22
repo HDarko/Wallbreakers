@@ -1,0 +1,31 @@
+//I thought it was a simple solution of deciding which vectors get put in the new matrix.
+
+Runtime: 40 ms, faster than 13.61% of C++ online submissions for Transpose Matrix.
+Memory Usage: 11.8 MB, less than 13.33% of C++ online submissions for Transpose Matrix.
+//I am quite curious about the what the others did to improve the speed
+
+
+class Solution {
+public:
+    vector<vector<int>> transpose(vector<vector<int>>& A) {
+        
+     
+      int nTransCols= A.size();
+      int nTransRows= A[0].size();
+      vector<vector<int>> trans;
+        
+        for(int row=0;row<nTransRows;row++)
+        {
+            vector<int> curRow;
+            for (int col=0;col<nTransCols;col++)
+            {
+                curRow.push_back(A[col][row]);
+            }
+           
+            trans.push_back(curRow);
+            
+         
+        }
+        return trans;
+    }
+};
