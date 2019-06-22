@@ -1,0 +1,30 @@
+/*
+  I think this one was straightforward enough to do.
+*
+*
+According to LeetCode at the time this was done on 6/22/2019
+
+Runtime: 20 ms, faster than 91.70% of C++ online submissions for Reverse Words in a String III.
+Memory Usage: 11.6 MB, less than 92.09% of C++ online submissions for Reverse Words in a String III.
+*
+*/
+class Solution {
+public:
+    string reverseWords(string s) {
+        int beginWord=0;
+        for(int endWord=1; endWord<s.size()+1; endWord++)
+        {
+            if (isspace(s[endWord]) || endWord==s.size())
+                {
+                    reverse(s.begin()+beginWord, s.begin()+ endWord);
+                    beginWord=endWord+1;
+                    endWord++;
+                    
+                }
+            
+         }
+        return s;
+    }
+};
+            
+            
