@@ -1,0 +1,31 @@
+//I thought it was a simple solution of deciding which vectors get put in the new matrix.
+
+//Runtime: 116 ms, faster than 5.43% of C++ online submissions for Sort Array By Parity.
+//Memory Usage: 9.5 MB, less than 88.60% of C++ online submissions for Sort Array By Parity.
+//I am quite curious about the what the others did to improve the speed
+
+
+class Solution {
+public:
+    vector<vector<int>> transpose(vector<vector<int>>& A) {
+        
+     
+      int nTransCols= A.size();
+      int nTransRows= A[0].size();
+      vector<vector<int>> trans;
+        
+        for(int row=0;row<nTransRows;row++)
+        {
+            vector<int> curRow;
+            for (int col=0;col<nTransCols;col++)
+            {
+                curRow.push_back(A[col][row]);
+            }
+           
+            trans.push_back(curRow);
+            
+         
+        }
+        return trans;
+    }
+};
