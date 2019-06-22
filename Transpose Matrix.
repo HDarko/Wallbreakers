@@ -1,7 +1,7 @@
 //I thought it was a simple solution of deciding which vectors get put in the new matrix.
 
-//Runtime: 116 ms, faster than 5.43% of C++ online submissions for Sort Array By Parity.
-//Memory Usage: 9.5 MB, less than 88.60% of C++ online submissions for Sort Array By Parity.
+Runtime: 40 ms, faster than 13.61% of C++ online submissions for Transpose Matrix.
+Memory Usage: 11.8 MB, less than 13.33% of C++ online submissions for Transpose Matrix.
 //I am quite curious about the what the others did to improve the speed
 
 
