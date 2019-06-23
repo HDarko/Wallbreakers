@@ -1,0 +1,28 @@
+/*
+This was straightforward to do.
+  
+Runtime: 4 ms, faster than 78.54% of C++ online submissions for Hamming Distance.
+Memory Usage: 8.3 MB, less than 32.95% of C++ online submissions for Hamming Distance.
+*/
+
+
+
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int value= x^y;
+         string binary=bitset<32>(value).to_string();
+        int countOnes=0;
+  for (char &digit:binary)
+        {
+            
+            if( (digit) ==('1'))
+            {
+                countOnes+=1;
+            }
+ 
+        }
+        
+     return  countOnes;
+    }
+};
