@@ -2,7 +2,7 @@
 In order to find the single non repeating num in a vector on intergers.
 
 Here is a trick:
- If you XOR a bit(binary representation of an int specifically) and 0 then you get 1
+ If you XOR a bit and 0 then you get 1
 but XOR the same two bits and you get 0
 so we gonna xor all the bits in the vector plus 0.
 
