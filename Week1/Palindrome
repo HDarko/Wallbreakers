@@ -1,0 +1,35 @@
+/* So instead of reversing the entire string we can reverse the latter half and compare that to
+the first half. In this case though that would require a test for odd vs even so for now just
+reverse the entire thing.
+
+According to LeetCode at the time
+Runtime: 12 ms, faster than 63.34% of C++ online submissions for Valid Palindrome.
+Memory Usage: 9.9 MB, less than 5.53% of C++ online submissions for Valid Palindrome.
+*/
+
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        string pureAlphaNum="";
+        for(auto iter=s.begin();iter!=s.end();++iter)
+        {
+            int ascii=*iter;
+          
+            if((ascii>47 && ascii<58) || (ascii>64 && ascii<91) ||
+               (ascii>96 && ascii<123))
+               {
+                   pureAlphaNum.push_back(tolower(*iter));
+               }
+        }
+        string reversed =pureAlphaNum;
+        reverse(reversed.begin(),reversed.end());
+        cout<<pureAlphaNum<<"\n";
+        cout<<reversed;
+        if (pureAlphaNum==reversed)
+            {
+                return true;
+            }
+        return false;
+        
+    }
+};
