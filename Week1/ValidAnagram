@@ -28,7 +28,7 @@ public:
 };
 
 /*
-A more effective solution shown in LeetCode is done as follows
+A more effective solution shown in LeetCode discussions is done as follows
 class Solution {
 public:
     bool isAnagram(string s, string t) {
