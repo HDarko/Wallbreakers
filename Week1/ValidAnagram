@@ -26,3 +26,23 @@ public:
         return (t.empty());
     }
 };
+
+/*
+A more effective solution shown in LeetCode is done as follows
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        unordered_map<char, int> sCharToCountMap, tCharToCountMap;
+        for (const auto& ch : s)    sCharToCountMap[ch]++;
+        for (const auto& ch : t)    tCharToCountMap[ch]++;
+        
+        for (const auto& elem : sCharToCountMap)
+            if (elem.second != tCharToCountMap[elem.first])     return false;
+        
+        for (const auto& elem : tCharToCountMap)
+            if (elem.second != sCharToCountMap[elem.first])     return false;
+        
+        return true;
+    }
+};
+*?
