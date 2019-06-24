@@ -46,7 +46,7 @@ public:
                     //If Left and UP have islands but they are indifferent groups then merge all 
                     //coneccting islands to the LEFT island
                      if(((f-1)>=0) && ((s-1)>=0) && ((grid[s-1][f]) =='1') && ((grid[s][f-1])=='1') &&
-                       (!Union(s-1,f-1,mapOfIslands)))
+                        (!Connected(counter-1,counter-rowSize,mapOfIslands)))
                      {
                         // int rowSize,int gridSize,int &islands[],
                             // int counter,flag)
