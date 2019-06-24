@@ -29,38 +29,49 @@ Current Solution currently doesnt work for this specific case. I get 24 islands 
 class Solution {
 public:
     int numIslands(vector<vector<char>>& grid) {
+        
         if(grid.empty()){return 0;}
+        
+        //gridSize is number of rows in grid.
         int gridSize=grid.size();
+        //Number of elements in a row
         int rowSize=grid[0].size();
+        
+        // mapOfIsland is an array that acts as array[index]=id
         int mapOfIslands[gridSize*rowSize];
+        //counter turns the 2d grid into a single array of positions
         int counter=0;
-        cout<<"rows "<<gridSize<<"\n";
-        cout<<"col "<< rowSize<<"\n";
+        //cout<<"rows "<<gridSize<<"\n";
+        //cout<<"col "<< rowSize<<"\n";
         for (int s=0; s<gridSize;s++)
         {
-        //For each 
             for(int f=0; f<rowSize;f++)
             {
+                //1 on the 2d grid means land so store land position in array
                 if(grid[s][f]=='1')
                 {
-                    //each land has a unique id, 0,1,2,3
-                    //from left to right then top to down it is
-                    //the ith(including 0th) land and ith becomes its id
                     
                     mapOfIslands[counter]=counter;
-                     //Now check if islands are nearby[Left or Up]
-                    //Up has higher precedence
+                     //Now check if islands are nearby[Left neighbour or Up neighbour]
+                    //Left is preferred ID though
                     
+                    //Up is one row above
                      if((s-1)>=0)
                      {
-                         //If UP has a land
+                         
                           if((grid[s-1][f]) =='1')
                          {
+                              //Asign ID of up neighbour so current land is part of island
                             mapOfIslands[counter]=Find(counter-rowSize,mapOfIslands); 
                              
                          }
+                          if((gridSize*rowSize)==400)
+                             {
+                              if(counter==227+1)
+                                cout<<mapOfIslands[counter];
+                             }
                      }
-                    //if LEFT has a island
+                    //if LEFT is one position left
                      if((f-1)>=0)
                      {
                          //cout<<counter<<"\n";
@@ -68,34 +79,34 @@ public:
                          //cout<<f;
                          if((grid[s][f-1])=='1')
                          {
+                             //Asign ID of left neighbour so current land is part of island
                             mapOfIslands[counter]=Find(counter-1,mapOfIslands); 
                          }
                      }
-                    //If Left and UP have islands but they are indifferent groups then merge all 
+                    //If we have both left and up land neigbours then check if both dont have same id
+                    //so are not part of same island
                     //coneccting islands to the LEFT island
                      if(((f-1)>=0) && ((s-1)>=0) && ((grid[s-1][f]) =='1') && ((grid[s][f-1])=='1') &&
                        (!Connected(counter-1,counter-rowSize,mapOfIslands)))
                      {
-                        // cout<<"row"<<s-1<<"and"<<"col"<<f<<"verusus"<<s<<"and"<<f-1<<"\n";
-                        // int rowSize,int gridSize,int &islands[],
-                            // int counter,flag)
+                        //Merge the up neigbour and any connecting lands to the left land for 
+                         //the island
                          MergeConnectedIslands(rowSize, gridSize,mapOfIslands,counter-rowSize,
                                                mapOfIslands[counter]);
                      }
-                    
-                    
-                    
-                    
                 }
                 else
                 {
+                    //The id we found was water so store water in array.
                      mapOfIslands[counter]=(-1);
                 }
-                //Now check if islands are nearby
+                //next position in 1D array and in 2D grid
                
                 counter++;
             }
         }
+       
+   
          return (Islands(mapOfIslands, counter));
     }
     
@@ -130,7 +141,8 @@ public:
             if(array[i]==i)
             {
                 counter++;
-                cout<<array[i]<<"at"<<i<<"\n";
+                //cout<<array[i]<<"at"<<i<<"\n";
+                //couta
             }
         }
         return counter;
