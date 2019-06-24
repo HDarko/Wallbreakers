@@ -46,12 +46,13 @@ public:
                     //If Left and UP have islands but they are indifferent groups then merge all 
                     //coneccting islands to the LEFT island
                      if(((f-1)>=0) && ((s-1)>=0) && ((grid[s-1][f]) =='1') && ((grid[s][f-1])=='1') &&
-                        (!Connected(counter-1,counter-rowSize,mapOfIslands)))
+                       (!Connected(counter-1,counter-rowSize,mapOfIslands)))
                      {
+                         cout<<"Hi";
                         // int rowSize,int gridSize,int &islands[],
                             // int counter,flag)
-                         MergeConnectedIslands(rowSize, gridSize, mapOfIslands,counter,
-                                               (mapOfIslands[counter]));
+                         MergeConnectedIslands(rowSize, gridSize,mapOfIslands,counter,
+                                               mapOfIslands[counter]);
                      }
                     
                     
@@ -119,10 +120,10 @@ public:
           //if the up islands may not been merged then merge them
          if((counter-rowSize)>=0)
          {
-            MergeConnectedIslands(rowSize,,gridSize, islands,counter-rowSize,flag);
+            MergeConnectedIslands(rowSize,gridSize, islands,counter-rowSize,flag);
          }
            //if the right islands may not been merged then merge them
-          if((counter+1)<gridSize)
+          if((counter+1)<=gridSize)
           {
              MergeConnectedIslands(rowSize,gridSize,islands,counter+1,flag);
         }
