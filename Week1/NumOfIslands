@@ -1,9 +1,10 @@
-
-Given a 2d grid map of '1's (land) and '0's (water), count the number of islands.
-An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. 
-You may assume all four edges of the grid are all surrounded by water.
-
-Solutions currently doesnt work for this specific case. Iget 24 islands instead of 23
+/* QUESTION TO BE SOLVED:
+    Given a 2d grid map of '1's (land) and '0's (water), count the number of islands.
+    An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. 
+    You may assume all four edges of the grid are all surrounded by water.
+    */
+Current Solution currently doesnt work for this specific case. I get 24 islands instead of 23
+----------------------------------------------------------------------------------
 ["1","0","1","1","0","0","1","0","1","1","1","1","0","1","0","1","1","1","1","0"]
 ["0","1","0","0","1","0","1","0","1","1","1","1","1","1","0","1","1","0","1","1"]
 ["1","0","0","1","0","1","0","1","0","1","1","0","1","1","1","0","0","1","1","0"]
@@ -23,7 +24,8 @@ Solutions currently doesnt work for this specific case. Iget 24 islands instead 
 ["0","0","0","0","1","1","1","1","0","0","0","0","1","0","0","0","0","1","1","0"]
 ["1","1","1","1","1","1","1","1","1","1","0","1","1","0","1","1","1","1","1","1"]
 ["0","1","0","0","1","0","0","1","1","1","1","1","1","0","1","0","1","1","1","1"]
-["0","0","1","1","1","1","1","0","0","0","1","1","1","1","1","1","0","1","1","0"]]
+["0","0","1","1","1","1","1","0","0","0","1","1","1","1","1","1","0","1","1","0"]
+---------------------------------------------------------------------------------
 class Solution {
 public:
     int numIslands(vector<vector<char>>& grid) {
@@ -36,6 +38,7 @@ public:
         cout<<"col "<< rowSize<<"\n";
         for (int s=0; s<gridSize;s++)
         {
+        //For each 
             for(int f=0; f<rowSize;f++)
             {
                 if(grid[s][f]=='1')
