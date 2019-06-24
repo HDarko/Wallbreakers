@@ -1,0 +1,133 @@
+
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        if(grid.empty()){return 0;}
+        int gridSize=grid.size();
+        int rowSize=grid[0].size();
+        int mapOfIslands[gridSize*rowSize];
+        int counter=0;
+        cout<<"rows "<<gridSize<<"\n";
+        cout<<"col "<< rowSize<<"\n";
+        for (int s=0; s<gridSize;s++)
+        {
+            for(int f=0; f<rowSize;f++)
+            {
+                if(grid[s][f]=='1')
+                {
+                    //each land has a unique id, 0,1,2,3
+                    //from left to right then top to down it is
+                    //the ith(including 0th) land and ith becomes its id
+                    
+                    mapOfIslands[counter]=counter;
+                     //Now check if islands are nearby[Left or Up]
+                    //Up has higher precedence
+                    
+                     if((s-1)>=0)
+                     {
+                         //If UP has a land
+                          if((grid[s-1][f]) =='1')
+                         {
+                            mapOfIslands[counter]=Find(counter-rowSize,mapOfIslands); 
+                             
+                         }
+                     }
+                    //if LEFT has a island
+                     if((f-1)>=0)
+                     {
+                         //cout<<counter<<"\n";
+                        // cout<<s;
+                         //cout<<f;
+                         if((grid[s][f-1])=='1')
+                         {
+                            mapOfIslands[counter]=Find(counter-1,mapOfIslands); 
+                         }
+                     }
+                    //If Left and UP have islands but they are indifferent groups then merge all 
+                    //coneccting islands to the LEFT island
+                     if(((f-1)>=0) && ((s-1)>=0) && ((grid[s-1][f]) =='1') && ((grid[s][f-1])=='1') &&
+                       (!Union(s-1,f-1,mapOfIslands)))
+                     {
+                        // int rowSize,int gridSize,int &islands[],
+                            // int counter,flag)
+                         MergeConnectedIslands(rowSize, gridSize, mapOfIslands,counter,
+                                               (mapOfIslands[counter]));
+                     }
+                    
+                    
+                    
+                    
+                }
+                else
+                {
+                     mapOfIslands[counter]=(-1);
+                }
+                //Now check if islands are nearby
+               
+                counter++;
+            }
+        }
+        cout<<counter;
+         return (Islands(mapOfIslands, counter));
+    }
+    
+    
+    int Find(int counter, int array[])
+    {
+        if (array[counter]==counter)
+        {
+           return counter; 
+        }
+      
+        return (Find(array[counter],array));
+    }
+    
+    void Union(int x, int y, int array[])
+    {
+        int rootOfX=Find(x,array);
+        int rootOfY=Find(y,array);
+        array[rootOfY]=rootOfX;
+    }
+    
+    bool Connected(int x, int y, int array[])
+    {
+        return (Find(x, array)==Find(y, array));
+    }
+    
+    int Islands(int array[], int size)
+    {
+        int counter=0;
+        for(int i=0; i<size;i++)
+        {
+            if(array[i]==i)
+            {
+                counter++;
+            }
+        }
+        return counter;
+    }
+  void MergeConnectedIslands(int rowSize,int gridSize,int islands[],
+                             int counter,int flag)
+  {
+      //The way our code is set up any islands that need to be merged are on the up and right
+      //neighbours
+      
+      //if the current land is not merged with island
+      if((islands[counter]!=(-1)) && (islands[counter]!=flag))
+      {
+          islands[counter]=flag;
+          //if the up islands may not been merged then merge them
+         if((counter-rowSize)>=0)
+         {
+            MergeConnectedIslands(rowSize,,gridSize, islands,counter-rowSize,flag);
+         }
+           //if the right islands may not been merged then merge them
+          if((counter+1)<gridSize)
+          {
+             MergeConnectedIslands(rowSize,gridSize,islands,counter+1,flag);
+        }
+      }
+  }
+           
+           
+};
