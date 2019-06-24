@@ -1,4 +1,5 @@
 
+
 class Solution {
 public:
     int numIslands(vector<vector<char>>& grid) {
@@ -48,10 +49,10 @@ public:
                      if(((f-1)>=0) && ((s-1)>=0) && ((grid[s-1][f]) =='1') && ((grid[s][f-1])=='1') &&
                        (!Connected(counter-1,counter-rowSize,mapOfIslands)))
                      {
-                         cout<<"Hi";
+                        // cout<<"row"<<s-1<<"and"<<"col"<<f<<"verusus"<<s<<"and"<<f-1<<"\n";
                         // int rowSize,int gridSize,int &islands[],
                             // int counter,flag)
-                         MergeConnectedIslands(rowSize, gridSize,mapOfIslands,counter,
+                         MergeConnectedIslands(rowSize, gridSize,mapOfIslands,counter-rowSize,
                                                mapOfIslands[counter]);
                      }
                     
@@ -68,7 +69,6 @@ public:
                 counter++;
             }
         }
-        cout<<counter;
          return (Islands(mapOfIslands, counter));
     }
     
@@ -103,6 +103,7 @@ public:
             if(array[i]==i)
             {
                 counter++;
+                cout<<array[i]<<"at"<<i<<"\n";
             }
         }
         return counter;
@@ -110,9 +111,7 @@ public:
   void MergeConnectedIslands(int rowSize,int gridSize,int islands[],
                              int counter,int flag)
   {
-      //The way our code is set up any islands that need to be merged are on the up and right
-      //neighbours
-      
+     
       //if the current land is not merged with island
       if((islands[counter]!=(-1)) && (islands[counter]!=flag))
       {
@@ -123,11 +122,22 @@ public:
             MergeConnectedIslands(rowSize,gridSize, islands,counter-rowSize,flag);
          }
            //if the right islands may not been merged then merge them
-          if((counter+1)<=gridSize)
+          if((counter+1)<gridSize)
           {
              MergeConnectedIslands(rowSize,gridSize,islands,counter+1,flag);
+         }
+            //if the left islands may not been merged then merge them
+          if((counter-1)>=0)
+          {
+             MergeConnectedIslands(rowSize,gridSize,islands,counter-1,flag);
+          }
+     
+           //if the down islands may not been merged then merge them
+          if((counter+rowSize)<gridSize)
+          {
+             MergeConnectedIslands(rowSize,gridSize,islands,counter+rowSize,flag);
+          }
         }
-      }
   }
            
            
