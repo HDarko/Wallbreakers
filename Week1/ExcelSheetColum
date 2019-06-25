@@ -1,4 +1,8 @@
 /*
+Problem:
+Given a column title as appear in an Excel sheet, return its corresponding column number.
+
+Notes:
 There are 26 numbers in the alphabet and AA= 27 =26+1
 If A=1 and AA= 27 then 1 + 26*1 , then AB= 2 +26*1
 AA to ZZ is 26 * 26 letters in all.
