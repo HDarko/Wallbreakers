@@ -1,4 +1,13 @@
-/*I was considering using a check where
+/*
+Problem:
+Write a program that outputs the string representation of numbers from 1 to n.
+
+But for multiples of three it should output “Fizz” instead of the number and 
+for the multiples of five output “Buzz”. 
+For numbers which are multiples of both three and five output “FizzBuzz”.
+
+Notes:
+I was considering using a check where
 if  num is multiple of 3 then add Fizz then
 if num is multiple of 5 then add Buzz which 
 I feel would have been great for cout the results
