@@ -1,4 +1,11 @@
-/*Notes:: 
+/*
+Problem:
+Given an array A of non-negative integers, 
+return an array consisting of all the even elements of A, 
+followed by all the odd elements of A.
+
+You may return any answer array that satisfies this condition.
+Notes:: 
 So while an obvious solution of iterating over the vector multiple times came to me.
 I wanted to see if I could do another more efficient one. I used std::rotate to continuously shift the 
 odd elements and uses counters lshifts and index to make sure that the constructor knew 
