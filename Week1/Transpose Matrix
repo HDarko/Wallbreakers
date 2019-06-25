@@ -1,4 +1,7 @@
-//I thought it was a simple solution of deciding which vectors get put in the new matrix.
+//Problem:Given a matrix A, return the transpose of A.
+
+The transpose of a matrix is the matrix flipped over it's main diagonal, switching the row and column indices of the matrix.
+I thought it was a simple solution of deciding which vectors get put in the new matrix.
 
 Runtime: 40 ms, faster than 13.61% of C++ online submissions for Transpose Matrix.
 Memory Usage: 11.8 MB, less than 13.33% of C++ online submissions for Transpose Matrix.
