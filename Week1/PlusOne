@@ -1,4 +1,16 @@
- /*Originally just gonna directly increase the integer but
+ /*
+ Problem:
+ 
+ Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
+
+The digits are stored such that the most significant digit is at the head of the list,
+and each element in the array contain a single digit.
+
+You may assume the integer does not contain any leading zero, except the number 0 itself.
+ 
+ Notes:
+ 
+ Originally just gonna directly increase the integer but
  once I saw the test cases of [9] and [9,9], I need to reiterate my
  program.
  I decided to iterate backwards towards the front of vector and 
@@ -8,6 +20,7 @@
  vector.
  */
  /*
+ According to LeetCode at the time I did this.
  Runtime: 8 ms, faster than 16.86% of C++ online submissions for Plus One.
 Memory Usage: 8.5 MB, less than 51.86% of C++ online submissions for Plus One.
  */
