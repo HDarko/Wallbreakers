@@ -1,9 +1,14 @@
 /*
-  I think this one was straightforward enough to do.
-*
-*
+Problem:
+Given a string, you need to reverse the order of characters 
+in each word within a sentence while still preserving whitespace and initial word order.
+ In the string, each word is separated by single space and there will not be any extra space in the string. 
+ 
+ *
+I think this one was straightforward enough to do.
 According to LeetCode at the time this was done on 6/22/2019
-
+*
+According to LeetCode:
 Runtime: 20 ms, faster than 91.70% of C++ online submissions for Reverse Words in a String III.
 Memory Usage: 11.6 MB, less than 92.09% of C++ online submissions for Reverse Words in a String III.
 *
