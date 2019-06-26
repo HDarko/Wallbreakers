@@ -1,4 +1,9 @@
 /*
+
+Problem:
+Given two strings s and t , write a function to determine if t is an anagram of s.
+
+Notes:
 This solution doesnt seem very effective or fast but it is straigtforward.
 Still not my best so will research on other more effective solutions.
 
