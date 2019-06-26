@@ -1,4 +1,15 @@
-/*I thought he best way to handle this is to use iterators to swap the pointers.
+/*
+Problem:
+Write a function that reverses a string. The input string is given as an array of characters char[].
+
+Do not allocate extra space for another array,
+you must do this by modifying the input array in-place with O(1) extra memory.
+
+You may assume all the characters consist of printable ascii characters.
+
+Notes:
+
+I thought he best way to handle this is to use iterators to swap the pointers.
 So I had a pointer to the front and end of the size to swap them as I shrunk the distance
 between the two. Instead of trying to make sure to stop when both iterators point to
 the same thing which would only work for an odd sized vector. I used a counter so
