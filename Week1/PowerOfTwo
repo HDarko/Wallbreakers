@@ -1,4 +1,6 @@
 /*
+Problem: Given an integer, write a function to determine if it is a power of two.
+Notes:
 There are a number of methods to solve this from what I can recall.
 I know there is a tricck with bits I will have to read up on after but there is also just checking is the log2 of num is the same when using the ceil and floor functions.
 Never did fully understand the math behind it though so shall look for that too.
