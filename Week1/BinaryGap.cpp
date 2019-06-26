@@ -1,4 +1,11 @@
 /*
+Problem:
+Given a positive integer N, 
+find and return the longest distance between two consecutive 1's 
+in the binary representation of N.
+Notes:
+
+If there aren't two consecutive 1's, return 0.
   This solution worked on first try so happy about that;
   
   At the time this was done
