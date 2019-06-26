@@ -9,7 +9,8 @@ Memory Usage: 8.4 MB, less than 35.34% of C++ online submissions for Binary Gap.
 class Solution {
 public:
     int binaryGap(int N) {
-        //vector<int,int> pairs;
+  
+      //All 1s have been been tested
         bool all=false;
         size_t distance=0;
         string binary=bitset<32>(N).to_string();
