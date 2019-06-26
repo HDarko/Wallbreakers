@@ -1,4 +1,10 @@
-/*Had a bit of issue with this one.
+/*
+Problem:
+Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string "".
+Notes:
+Had a bit of issue with this one.
 The problem was just the order I was testing when the vector or a string was empty
 According to LeetCode
 Runtime: 4 ms, faster than 97.64% of C++ online submissions for Longest Common Prefix.
