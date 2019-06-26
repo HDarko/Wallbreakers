@@ -1,10 +1,18 @@
-/* So instead of reversing the entire string we can reverse the latter half and compare that to
+/*
+Problem:
+Given a string, determine if it is a palindrome, 
+considering only alphanumeric characters and ignoring cases.
+ For the purpose of this problem, we define empty string as valid palindrome.
+
+Notes:
+
+So instead of reversing the entire string we can reverse the latter half and compare that to
 the first half. In this case though that would require a test for odd vs even so for now just
 reverse the entire thing.
 
 According to LeetCode at the time
-Runtime: 12 ms, faster than 63.34% of C++ online submissions for Valid Palindrome.
-Memory Usage: 9.9 MB, less than 5.53% of C++ online submissions for Valid Palindrome.
+Runtime: 8 ms, faster than 92.23% of C++ online submissions for Valid Palindrome.
+Memory Usage: 9.9 MB, less than 5.03% of C++ online submissions for Valid Palindrome.
 */
 
 class Solution {
