@@ -1,0 +1,89 @@
+/*
+You are given an array A of strings.
+
+Two strings S and T are special-equivalent if after any number of moves, S == T.
+
+A move consists of choosing two indices i and j with i % 2 == j % 2, and swapping S[i] with S[j].
+
+Now, a group of special-equivalent strings from A is a non-empty subset S of A such that
+any string not in S is not special-equivalent with any string in S.
+
+Return the number of groups of special-equivalent strings from A.
+
+Example 1:
+
+Input: ["a","b","c","a","c","c"]
+Output: 3
+Explanation: 3 groups ["a","a"], ["b"], ["c","c","c"]
+
+Example 2:
+
+Input: ["aa","bb","ab","ba"]
+Output: 4
+Explanation: 4 groups ["aa"], ["bb"], ["ab"], ["ba"]
+
+Example 3:
+
+Input: ["abc","acb","bac","bca","cab","cba"]
+Output: 3
+Explanation: 3 groups ["abc","cba"], ["acb","bca"], ["bac","cab"]
+
+Example 4:
+
+Input: ["abcd","cdab","adcb","cbad"]
+Output: 1
+Explanation: 1 group ["abcd","cdab","adcb","cbad"]
+
+1 <= A.length <= 1000
+1 <= A[i].length <= 20
+All A[i] have the same length.
+All A[i] consist of only lowercase letters.
+
+Notes:
+This question was a bit confusing it what it wanted me to do. 
+But now I understand that is a variant of the 'anagram' problem.
+With the anagram I would need a sorted list of letters per word so
+I can tell if the words are anagrams of each other.
+In this case the letters can only be swapped if both are in even positions or odd possitions.
+Since I need a number of distict groups I will use a set. 
+My plan is to put all the even letters of a word in sorted order infront of its sorted odd words.
+This way if special equilvalent strings will have the same sorted words and so will not add to the set of such words.
+
+According to LeetCode:
+Runtime: 8 ms, faster than 97.54% of C++ online submissions for Groups of Special-Equivalent Strings.
+Memory Usage: 10 MB, less than 49.17% of C++ online submissions for Groups of Special-Equivalent Strings.
+
+*/
+
+class Solution {
+public:
+    int numSpecialEquivGroups(vector<string>& A) {
+         unordered_set<string> sortedEvenOdd;
+        for(string word: A)
+        {
+            string evenLet="";
+            string oddLet="";
+            
+            for(int i=0; i<word.length();i++)
+            {
+                if((i%2)==0)
+                {
+                    //Add to Even
+                    evenLet+=word[i];
+                }
+                else
+                {
+                    //Add to Odd
+                    oddLet+=word[i];
+                }
+            }
+            //Sort the the odd and even strings then add them together
+            sort(evenLet.begin(), evenLet.end());
+            sort(oddLet.begin(), oddLet.end());
+            sortedEvenOdd.insert(evenLet+oddLet);
+        }
+        
+        return sortedEvenOdd.size();
+        
+    }
+};
