@@ -16,6 +16,8 @@ hashmap and update a words counter each time it is found in
 A or B. Thus the ones I would want will have a counter of 1.
 I forgot to account for the uncommon words specifically in B
 
+Also could have optimized it by A + " "+ B then going through that single string.
+
 According to LeetCode:
 Runtime: 4 ms, faster than 84.64% of C++ online submissions for Uncommon Words from Two Sentences.
 Memory Usage: 8.9 MB, less than 59.71% of C++ online submissions for Uncommon Words from Two Sentences.
