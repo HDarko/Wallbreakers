@@ -92,3 +92,68 @@ public:
  * int param_2 = obj->get(key);
  * obj->remove(key);
  */
+//I found this solution interesting since it shows another method of going through this question.
+
+class MyHashMap {
+public:
+    /** Initialize your data structure here. */
+    MyHashMap(): container(32, nullptr), len(32)  {
+    }
+    
+    /** value will always be non-negative. */
+    void put(int key, int value) {
+        int key_ = getKey(key);
+        ListNode* cur = container[key_];
+        if(!cur)
+            container[key_] = new ListNode(key, value);
+        else {
+            for(; cur; cur = cur->next) {
+                if(cur->key == key) {
+                    cur->val = value;
+                    return;
+                }
+            }
+            ListNode* tmp = new ListNode(key, value);
+            tmp->next = container[key_];
+            container[key_] = tmp;
+        }
+    }
+    
+    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+    int get(int key) {
+        int key_ = getKey(key);
+        if(!container[key_]) return -1;
+        ListNode* cur = container[key_];
+        while(cur && cur->key!= key) cur = cur->next;
+        if(!cur) return -1;
+        return cur->val;
+    }
+    
+    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+    void remove(int key) {
+        int key_ = getKey(key);
+        ListNode** pp = &container[key_];
+        while(*pp) {
+            if((*pp)->key != key)
+                pp = &(*pp)->next;
+            else {
+                ListNode* tmp = *pp;
+                *pp = (*pp)->next;
+                delete tmp;
+            }
+        }
+    }
+private:
+    struct ListNode {
+        int key;
+        int val;
+        ListNode* next;
+        ListNode(int _key, int _val): key(_key), val(_val), next(nullptr) {
+        }
+    };
+    int len;
+    vector<ListNode* > container;
+    int getKey(int key)  {
+        return key & (len - 1);
+    }
+};
