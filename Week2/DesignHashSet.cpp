@@ -27,7 +27,7 @@ hashSet.contains(2);    // returns false (already removed)
 
 Notes: I find myself curious about this.
 For this question I could either see a linked list implementation, a vector implementation
-or even a bitset implementation though that one feels like cheating to me?
+or even a bitset implementation though that one feels like cheating to me?(even saw a BST implementation)
 I went for vector in both this and the hastbale cos I pioritised simplicity and memory.
 This has resulted in a sacrifice to my speed but I think it suffices.
 
@@ -68,4 +68,26 @@ public:
         
     }
     vector<int> set;
+};
+//I will add the bitset solution for tthis though the following code was found on LeetCode and is not mine.
+//There are for furture reference 
+/*  std::bitset<10'000'000> tbl;
+  public:
+  MyHashSet() {
+    std::ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+  }
+
+  void add(int key) noexcept {
+    tbl.set(key);
+  }
+
+  void remove(int key) noexcept {
+    tbl.reset(key);
+  }
+
+  /** Returns true if this set contains the specified element */
+  bool contains(int key) const noexcept {
+    return tbl.test(key);
+  }
 };
