@@ -103,3 +103,61 @@ public:
             return indexAB[wordASize][wordBSize];
            }
     };
+
+    //Solution 2: Dynamic Programming was bit trickier when it came to how to represent the results.
+    //According to LeetCode:
+    /*
+    Runtime: 12 ms, faster than 78.43% of C++ online submissions for Edit Distance.
+    Memory Usage: 9.7 MB, less than 70.74% of C++ online submissions for Edit Distance.
+    */
+class Solution {
+public:
+    int minDistance(string word1, string word2) {
+        
+        //Keey track of any index combinations we have seen before
+        //like [0][0] or [2][3] etc. we need extra row cos of empty strings
+        
+       //Note that we iterating backwards
+        return (MinEditDistance(word1,word2, word1.size(),word2.size()));
+    }
+    
+   int MinEditDistance(string &wordA, string &wordB, int wordASize, int wordBSize)
+    {
+       int indexAB[wordASize+1][wordBSize+1];
+       for (int AIndex=0; AIndex<=wordASize; AIndex++)
+       {
+           for (int BIndex=0;  BIndex<=wordBSize; BIndex++)
+           {
+                if(AIndex==0)
+                    {
+                        //since word1 is zero we have to add the letters from word2
+                         indexAB[AIndex][BIndex]= BIndex; //insertion of all letters from B
+                    }
+                else if(BIndex==0)
+                {
+                        //we have to remove all the letters in word1
+                        indexAB[AIndex][BIndex]= AIndex; //deletion of all letters from A
+                }
+               //since we using sizes then as we need to subract 1 to get the right index.
+               else  if((wordA[AIndex-1]) == (wordB[BIndex-1]))
+               {
+                    //In this case the letters are the same so same value as their previous version
+                   indexAB[AIndex][BIndex]= indexAB[ AIndex-1][BIndex-1];
+               }
+               else 
+               {
+                   indexAB[AIndex][BIndex]= 1+ min({
+                   //Insertion
+                    (indexAB[AIndex][BIndex-1]),
+                   //Deletion
+                     (indexAB[AIndex-1][BIndex]),
+                   //Substitution(2 cos it is delete then insert)
+                     (indexAB[AIndex-1][BIndex-1])
+               });
+               }
+  
+           }
+       }
+       return (indexAB[wordASize][wordBSize]);
+    }
+};
