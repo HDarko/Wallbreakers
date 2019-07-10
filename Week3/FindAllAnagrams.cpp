@@ -31,52 +31,18 @@ The substring with start index = 0 is "ab", which is an anagram of "ab".
 The substring with start index = 1 is "ba", which is an anagram of "ab".
 The substring with start index = 2 is "ab", which is an anagram of "ab".
 
-Notes:: Both solutions fail with a test case of 1000 a's for p and 2100 a's for s
+Notes: So for my solution I had a sliding window of size p go through string s and sort the words
+withing. In this case I used a vector of my slidding window to make it easier to insert values and remove them.
+I used binary search to find the deleted values and one optimization I oculd have made was to use binary search to inseart into
+my sorted window.
+
+According to LeetCode:
+Runtime: 172 ms, faster than 11.24% of C++ online submissions for Find All Anagrams in a String.
+Memory Usage: 10.4 MB, less than 38.90% of C++ online submissions for Find All Anagrams in a String.
 
 */
 
-//Solution Number 1:
 
-class Solution {
-public:
-    vector<int> findAnagrams(string s, string p) {
-        if(p.length()>s.length())
-        {
-            return {};
-        }
-        string curWindow="";
-        vector<int> anagramIndices;
-        sort(p.begin(),p.end());
-       
-        for(int index=0; index<s.size(); index++)
-        {
-            int indexForWind{index};
-            //Check if an anagram starting from this index
-            //is within s
-            if(( index+ p.length()-1)< s.length())
-            {
-                
-                while(curWindow.length()<p.length()) 
-                {
-
-                    curWindow+=s[indexForWind++];
-                }
-                sort(curWindow.begin(), curWindow.end());
-                if(curWindow==p)
-                {
-                    anagramIndices.push_back(index);
-                }
-                curWindow="";
-             }
-        }
-        return anagramIndices;   
-        
-    }
-};
-//"cbaebabacd" p: "abc"
-//aaabbbccd  abc
-
-//Solution Number 2:
 
 class Solution {
 public:
@@ -125,12 +91,6 @@ public:
                            int curIndex=indexForWind+lastIndex;
              
                           SortedInsert(curWindow,s[curIndex]);
-                          for(auto charr: curWindow)
-                          {
-                              cout<<charr;
-                          }
-                           indexForWind++;
-                           cout<<"\n";
                     } 
                     lastIndex=lastIndex;
                 } 
@@ -144,7 +104,7 @@ public:
                 {
                     anagramIndices.push_back(index);
                 }
-                auto it =find(curWindow.begin(), curWindow.end(),firstCharacter);
+                auto it =lower_bound(curWindow.begin(), curWindow.end(),firstCharacter);
                // cout<<curWindow[distance(curWindow.begin(),it)];
                 
                 curWindow.erase(it);
@@ -176,11 +136,9 @@ public:
             
                                     
         }
+    
+   
                                 
                                 
 };
-//"cbaebabacd" p: "abc"
-//aaabbbccd  abc
-//cba
-//abe
 
