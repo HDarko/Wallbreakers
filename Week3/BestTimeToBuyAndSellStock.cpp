@@ -62,3 +62,41 @@ public:
     }
 };
 
+/*
+Recursion is trying to do esential the same thing but done in the functions arguments.
+According to LeetCode:
+For the recusrion solution:
+Runtime: 4 ms, faster than 98.97% of C++ online submissions for Best Time to Buy and Sell Stock.
+Memory Usage: 19.8 MB, less than 5.00% of C++ online submissions for Best Time to Buy and Sell Stock.
+*/
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        if(prices.size()==0)
+        {
+            return 0;
+        }
+        //The first question we want to ask is what is the minimum cost to buy
+        //a stock(from day 1 to now), then second is with a specific stock we want to sell starting from a 
+        //specific day, what is the max profit we can get from that stock
+        
+       return (FindMaxProfit(prices,0,0,prices[0]));
+       
+    }
+    
+     int FindMaxProfit(vector<int>&  prices,int curIndex,int maxProfit, int minPrice)
+     {
+         // cout<<"maxP"<<maxProfit<<"\n";
+         if(curIndex<prices.size())
+         {
+             
+             maxProfit=max(maxProfit,FindMaxProfit( prices, curIndex+1,
+                                                    max(maxProfit, prices[curIndex]-minPrice),
+                           min( minPrice,prices[curIndex])));
+         }  
+          
+        return maxProfit;
+     }
+       
+};
+
