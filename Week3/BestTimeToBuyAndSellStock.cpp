@@ -27,14 +27,17 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
         the max profit between selling our stock today - our know min Price and any profit in the past.
         to get this we need an vector of prices+1 so that day zero is a null day and has an INT_Max so that
         the formula we divised upwards will work
+        
+        According to LeetCode for the dynamic solution:
+        Runtime: 8 ms, faster than 78.99% of C++ online submissions for Best Time to Buy and Sell Stock.
+        Memory Usage: 9.6 MB, less than 16.15% of C++ online submissions for Best Time to Buy and Sell Stock.
+        
         */
         
         class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        //The first question we want to ask is what is the minimum cost to buy
-        //a stock(from day 1 to now), then second is with a specific stock we want to sell starting from a 
-        //specific day, what is the max profit we can get from that stock
+      
         if(prices.size()==0)
         {
             return 0;
@@ -58,4 +61,4 @@ public:
         return maxProfit;
     }
 };
-*/
+
