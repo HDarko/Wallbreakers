@@ -23,8 +23,10 @@ Output: 1
     A is a mountain, as defined above.
 
 My solution according to LeetCode:
-Runtime: 16 ms, faster than 77.11% of C++ online submissions for Peak Index in a Mountain Array.
-Memory Usage: 9.5 MB, less than 23.62% of C++ online submissions for Peak Index in a Mountain Array.
+Runtime: 16 ms, faster than 77.05% of C++ online submissions for Peak Index in a Mountain Array.
+Memory Usage: 9.4 MB, less than 28.88% of C++ online submissions for Peak Index in a Mountain Array.
+
+Notes: Using BinarySearch for my solution
 */
 
 class Solution {
@@ -32,14 +34,30 @@ public:
     int peakIndexInMountainArray(vector<int>& A) {
         //Since A is definitely a mounatin then we just need to find the index where the 
         //the index + 1 has a smaller value
-        for(int index=0; index<A.size();index++)
+        int lowerIndex=-1;
+        int upperIndex=A.size();
+        int middleIndex;
+        while(lowerIndex+1!=upperIndex)
         {
-            if(A[index+1]<A[index])
+            middleIndex=(lowerIndex+(upperIndex-lowerIndex)/2);
+            if(A[middleIndex+1]<A[middleIndex])
             {
-                return index;
+                if( A[middleIndex-1]< A[middleIndex])
+                {
+                    return middleIndex;
+                }
+                else
+                {
+                    upperIndex=middleIndex;
+                }
+            }
+            else
+            {
+                lowerIndex=middleIndex;
             }
         }
-        return -1;
+        return middleIndex;
+ 
         
     }
 };
