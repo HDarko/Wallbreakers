@@ -95,3 +95,65 @@ public:
         return maxLootRecord.back();
     }
 };
+
+//Solution 2 using Recusion and memoization
+//According to LeetCode
+/*
+Runtime: 4 ms, faster than 72.78% of C++ online submissions for House Robber II.
+Memory Usage: 8.5 MB, less than 66.53% of C++ online submissions for House Robber II.
+*/
+class Solution {
+
+public:
+    int rob(vector<int>& nums) {
+        //if we have 0 houses then return 0.
+        if(nums.empty())
+        {
+            return 0;
+        }
+        //if only one house then return that house loot
+        else if(nums.size()==1)
+        {
+            return nums[0];
+        }
+       // if only two houses then return best loot between them
+        else if (nums.size()==2)
+        {
+            return max(nums[0], nums[1]);
+        }
+        else
+        {
+            //We need records of the max loot so far for memoization
+            vector<int> maxLootRecordFirstHouse(nums.size()+1);
+            vector<int> maxLootRecordLastHouse(nums.size()+1);
+        //record loot for house 0 
+          maxLootRecordFirstHouse[0]=0;
+          maxLootRecordLastHouse[0]=0;
+        //record loot for house 1
+           maxLootRecordFirstHouse[1]=nums[0];
+           maxLootRecordLastHouse[1]=nums[1];
+        //return max loot between scenario 1 with robbing first house and scenario 2
+        //robbing last house
+            //start with second house
+            return max(BestLootNoAdjacentHouses(nums, 1, nums.size()-2, 2,maxLootRecordFirstHouse),
+                       BestLootNoAdjacentHouses(nums, 2, nums.size()-1,2,maxLootRecordLastHouse));
+        
+    }
+    }
+    
+    int BestLootNoAdjacentHouses(vector<int>&nums, int curHouseIndex, int lastHouseIndex, int curLootIndex,
+                                vector<int> &maxLootRecord)
+    {
+        maxLootRecord[curLootIndex]=max(maxLootRecord[curLootIndex-1], nums[curHouseIndex]+ maxLootRecord[curLootIndex-2]);
+        if (curHouseIndex==lastHouseIndex)
+        {
+            //cout<<maxLootRecord[curLootIndex]<<"\n";
+            return maxLootRecord[curLootIndex];
+        }
+        else
+        {
+            return BestLootNoAdjacentHouses(nums,curHouseIndex+1, lastHouseIndex, curLootIndex+1,
+                                 maxLootRecord);
+        }
+    }
+};
