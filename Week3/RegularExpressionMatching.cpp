@@ -80,7 +80,7 @@ public:
         {
             return s.empty();
         }
-        bool indices[s.length()+1][p.length()+1]={};
+         vector<vector<bool>>indices (s.length()+1 , vector<bool>(p.length()+1,{} ) );;
         //represents that we passed the is one empty condition parts
         indices[0][0]=true;
         //if s is empty then every 2nd element in p must be *
