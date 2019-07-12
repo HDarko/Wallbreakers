@@ -70,6 +70,10 @@ previous True or False we had before.
 						 if  true then either prev pattern letter and current letter match or
 							 check if the next pattern letter after star matches the current  word letter
 
+This question required me to watch a Youtube Vid before I understood the concepts
+https://youtu.be/PGlYbdAwiNY
+Though I think I took a different approach
+Did not add a recursive solution because so far cant get it to work
 */
 
 class Solution {
@@ -138,73 +142,4 @@ public:
            
     };
     
-    
-    RECURSION SOLUTION DOES NOT WORK! ITS PRETTY BAD 
-    class Solution {
-public:
-    bool isMatch(string s, string p) {
-        //if p is "" then return if s is ""
-        if(p.empty())
-        {
-            return s.empty();
-        }
-       // vector<vector<int>> indexABHistory(word1.length()+1,vector<int>(word2.length()+1,(-1)));
-        vector<vector<int>>indices(s.length()+1 , vector<int>(p.length()+1, (-1)));
-        //represents that we passed the is one empty condition parts
-        indices[0][0]=true;
-        //if s is empty then every 2nd element in p must be *
-        
-         return ((searchRegularExpresion(s, p, 1, 1, indices))==1);
-    }
-       int searchRegularExpresion(string &s, string &p, int sIndex, int pIndex,
-                                vector<vector<int>> indices)
-        {
-           if(sIndex<s.length() && pIndex<p.length()){
-            if (indices[sIndex][pIndex]!=-1)
-            {
-               return indices[sIndex][pIndex];
-            }
-            //If the letters dont match and p is not a dot 
-            
-            else if ((s[sIndex]!=p[pIndex]) && ((p[pIndex]) !='.'))
-            {
-                    if((p[pIndex]) !='*')
-                    {
-                         indices[sIndex][pIndex]=0;
-                        return 0;
-                     }
-                    else
-                    {
-                        //if p is a start then than changes things, we need to compare our s 
-                        //to the letter after the *, essentially moving past it
-                        indices[sIndex][pIndex]= searchRegularExpresion(s, p, sIndex,pIndex+2,
-                                   indices);
-                     }
-               }
-            //if our letters match or p is a dot
-            else if((s[sIndex]==p[pIndex]) || ((p[pIndex]) =='.'))
-            {
-                //check if p+1 is not * if it is then the results are based on the next result
-                if((p[pIndex+1]) =='*')
-                 indices[sIndex][pIndex]=searchRegularExpresion( s,  p, sIndex+1,pIndex+1,
-                                   indices);
-                else
-                {
-                    //We must compare the next letter after current word letter to our p
-                    //and base results on that or our current word letter and the p after the *
-                   indices[sIndex][pIndex]=searchRegularExpresion( s,  p, sIndex+1,pIndex,
-                                   indices) || searchRegularExpresion( s,  p, sIndex+1,pIndex+2,
-                                   indices); 
-                }
-                
-            }
-
-               
-                
-            }
-            return (indices[s.length()][p.length()]);
-       }
-          
-            };
-           
- 
+   
