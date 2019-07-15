@@ -1,0 +1,6 @@
+LinkedList
+Stacks
+Queues
+Heaps
+Combinatorial generation
+BackTracking
