@@ -1,0 +1,67 @@
+/*
+Given a balanced parentheses string S, compute the score of the string based on the following rule:
+
+    () has score 1
+    AB has score A + B, where A and B are balanced parentheses strings.
+    (A) has score 2 * A, where A is a balanced parentheses string.
+
+ 
+
+Example 1:
+
+Input: "()"
+Output: 1
+
+Example 2:
+
+Input: "(())"
+Output: 2
+
+Example 3:
+
+Input: "()()"
+Output: 2
+
+Example 4:
+
+Input: "(()(()))"
+Output: 6
+
+According to LeetCode:
+Runtime: 4 ms, faster than 66.67% of C++ online submissions for Score of Parentheses.
+Memory Usage: 8.5 MB, less than 25.45% of C++ online submissions for Score of Parentheses.
+*/
+class Solution {
+public:
+    int scoreOfParentheses(string S) {
+        if (S.empty())
+        {return 0;}
+        //we need to keep track of the score as we move through the 
+        //string
+        stack<int> score;
+        //initial score is 0
+        score.push(0);
+        for(char &brac: S)
+        {
+            //if brac is ( then add a zero to stack
+            if(brac=='(')
+            {
+                score.push(0);
+            }
+            else
+            {
+                //if we have a case of () then we add 1 to the stack 
+                //else we assume we have a A(B) .This way either A(B) will be max if true,
+                //(B) will be max if true else 1 is the highest
+                //will be the larger value
+                int prevScore= score.top();
+                score.pop();
+                int scoreBeforePrev= score.top();
+                score.pop();
+                score.push(scoreBeforePrev+max(2* prevScore,1));
+            }
+        }
+        return score.top();
+        
+    }
+};
