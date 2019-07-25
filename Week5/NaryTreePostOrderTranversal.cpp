@@ -1,4 +1,4 @@
-Given an n-ary tree, return the postorder traversal of its nodes' values.
+/*Given an n-ary tree, return the postorder traversal of its nodes' values.
 
 For example, given a 3-ary tree:
 
@@ -8,6 +8,11 @@ For example, given a 3-ary tree:
 
 Return its postorder traversal as: [5,6,3,2,4,1].
 
+Solution:
+Runtime: 156 ms
+Memory Usage: 33 MB
+
+*/
 class Solution {
 public:
     vector<int> postorder(Node* root) {
