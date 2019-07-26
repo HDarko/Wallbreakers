@@ -45,6 +45,10 @@ Note: The given binary tree has not more than 10000 nodes. The height of the tre
  *     TreeNode *right;
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
+ 
+ Solution according to Leetcode:
+ Runtime: 140 ms, faster than 37.72% of C++ online submissions for Longest Univalue Path.
+Memory Usage: 49.6 MB, less than 75.09% of C++ online submissions for Longest Univalue Path.
  */
 class Solution {
 public:
