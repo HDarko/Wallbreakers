@@ -30,19 +30,21 @@ Note:
 *
 
 /*
-Internet slow so not sure how this solution faires
-We have to test it another time
+According to LeetCode:
+Runtime: 24 ms, faster than 66.05% of C++ online submissions for Course Schedule.
+Memory Usage: 14.1 MB, less than 42.33% of C++ online submissions for Course Schedule.
 */
 
-        class Solution {
+    class Solution {
 public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         //Using topology sort
         vector<vector<int>> graph(numCourses, vector<int>{});
+        //How many courses is they key a prereq for
         vector<int> preCourses(numCourses,0);
         
         //Build an graph-list of edges
-        for(auto classPair: prerequisities)
+        for(auto classPair: prerequisites)
         {
             //graph[neededclass]=class after
             graph[classPair[1]].push_back(classPair[0]);
@@ -52,11 +54,11 @@ public:
         {
             for(auto prereq: course)
             {
-                preCourses[course]++;
+                preCourses[prereq]++;
             }
         }
         
-        for(int index=0; index<numCourses; index++)
+        for(int count=0; count<numCourses; count++)
         {
             int start{0};
             while(start<numCourses)
@@ -75,6 +77,8 @@ public:
             {
                 return false;
             }
+            //need to make the current start
+            preCourses[start]=(-1);
             for(auto course: graph[start])
             {
                 preCourses[course]-=1;
